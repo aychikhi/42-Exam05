@@ -27,6 +27,6 @@ int main(){
     std::cout << "d >= a " << (d >= a) << std::endl;
 
     // step 6: extra test from exam
-    // std::cout << a - a << std::endl;
+    std::cout << a - a << std::endl;
     return 0;
 }
