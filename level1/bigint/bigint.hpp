@@ -1,5 +1,4 @@
-#ifndef EXAMM_HPP
-#define EXAMM_HPP
+#pragma once
 
 #include <string>
 #include <iostream>
@@ -123,5 +122,3 @@ class bigint
             return (!(*this > b));
         }
 };
-
-#endif
