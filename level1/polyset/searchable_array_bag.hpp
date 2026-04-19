@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include "array_bag.hpp"
 #include "searchable_bag.hpp"
 
