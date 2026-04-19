@@ -1,5 +1,4 @@
-#ifndef SET_HPP
-#define SET_HPP
+#pragma once
 
 #include "searchable_bag.hpp"
 #include "array_bag.hpp"
@@ -23,4 +22,3 @@ class set {
 
 };
 
-#endif
