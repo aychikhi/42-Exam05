@@ -1,24 +1,44 @@
 #pragma once
 
 #include "searchable_bag.hpp"
-#include "array_bag.hpp"
-#include "tree_bag.hpp"
+class set
+{
+    private:
+        searchable_bag &bag;
+    public:
+        set(searchable_bag &bag) : bag(bag) {};
+        set(const set& obj) : bag(obj.bag) {};
+        ~set() {};
 
-class set {
-	private:
-		searchable_bag& bag_ptr;
+        void insert(int value)
+        {
+            if(!bag.has(value))
+                bag.insert(value);
+        };
+	    void insert(int *data, int size) 
+        {
+            for (int i = 0; i < size; i++)
+            {
+                if(!bag.has(data[i]))
+                    bag.insert(data[i]);
+            }
+            
+        };
+	    void print() const
+        {
+            bag.print();
+        };
+	    void clear()
+        {
+            bag.clear();
+        };
 
-	public:
-		set(searchable_bag& other);
-
-		void insert(int value);
-		void insert(int *array, int size);
-		void print() const;
-		void clear();
-
-		bool has(int value) const;
-
-		searchable_bag& get_bag() const;
-
+        bool has(int value)const 
+        {
+            return(bag.has(value));
+        };
+        const searchable_bag &get_bag() const
+        {
+            return(bag);
+        };
 };
-
