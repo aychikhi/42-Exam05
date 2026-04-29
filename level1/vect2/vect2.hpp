@@ -1,44 +1,120 @@
-#ifndef VECT2_HPP
-#define VECT2_HPP
+#pragma once
 
 #include <iostream>
 
-class vect2 {
-	private:
-		int x, y;
+class vect2
+{
+    private:
+        int x, y;
+    public:
+        vect2() : x(0) , y(0) {};
+        vect2(int x, int y) : x(x) , y(y) {};
+        vect2(const vect2& obj) : x(obj.x) , y(obj.y){};
+        vect2 operator=(const vect2& obj) 
+        {
+            if(this != &obj)
+            {
+                x = obj.x;
+                y = obj.y;
+            }
+            return *this;
+        };
 
-	public:
-		//	Canonical form
-		vect2();
-		vect2(int x, int y);
-		vect2(const vect2& other);
-		vect2& operator=(const vect2& other);
-		~vect2();
+        int& operator[](int i)
+        {
+            if(i == 0)
+                return x;
+            else
+                return y;
+        };
+        int operator[](int i) const
+        {
+            if(i == 0)
+                return x;
+            else
+                return y;
+        };
 
-		//	Element access
-		int& operator[](int index);
-		const int& operator[](int index) const;
+        vect2& operator++()
+        {
+            x++;
+            y++;
+            return *this;
+        };
+        vect2 operator++(int)
+        {
+            vect2 tmp = *this;
+            x++;
+            y++;
+            return tmp;
+        };
+        vect2& operator--()
+        {
+            x--;
+            y--;
+            return *this;
+        };
+        vect2 operator--(int)
+        {
+            vect2 tmp = *this;
+            x--;
+            y--;
+            return tmp;
+        };
+        
+        vect2& operator+=(const vect2& obj)
+        {
+            x += obj.x;
+            y += obj.y;
+            return *this;
+        };
+        vect2& operator-=(const vect2& obj)
+        {
+            x -= obj.x;
+            y -= obj.y;
+            return *this;
+        };
+        vect2& operator*=(int v)
+        {
+            x *= v;
+            y *= v;
+            return *this;
+        };
 
-		//	Increment
-		vect2& operator++();
-		vect2& operator--();
-		vect2 operator++(int);
-		vect2 operator--(int);
+        vect2 operator+(const vect2 &obj) const
+        {
+            return(vect2(x + obj.x , y + obj.y));
+        };
+        vect2 operator-(const vect2 &obj) const
+        {
+            return(vect2(x - obj.x , y - obj.y));
+        };
+        vect2 operator*(int v) const
+        {
+            return(vect2(x * v , y * v));
+        };
 
-		//	Comparisons
-		vect2& operator+=(const vect2& other);
-		vect2& operator-=(const vect2& other);
-		vect2& operator*=(int t);
-		vect2 operator+(const vect2& other) const;
-		vect2 operator-(const vect2& other) const;
-		vect2 operator*(int t) const;
-		vect2 operator-() const;
+        vect2 operator-()
+        {
+            return(vect2(-x, -y));
+        }
 
-		bool operator==(const vect2& other) const;
-		bool operator!=(const vect2& other) const;
+        bool operator==(const vect2 &obj)
+        {
+            return(x == obj.x && y == obj.y);
+        };
+        bool operator!=(const vect2 &obj)
+        {
+            return(x != obj.x && y != obj.y);
+        };
 
-		friend vect2 operator*(int t, const vect2& other);
-		friend std::ostream& operator<<(std::ostream& os, const vect2& other);
-};
-
-#endif
+        friend vect2 operator*(int v, const vect2 &obj)
+        {
+            return(vect2(obj.x * v , obj.y * v));
+        }
+        friend std::ostream& operator<<(std::ostream &os , const vect2 &obj)
+        {
+            os << "{" << obj[0] << ", " << obj[1] << "}";
+            return(os);
+        };
+}
