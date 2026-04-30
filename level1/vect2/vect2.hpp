@@ -117,4 +117,4 @@ class vect2
             os << "{" << obj[0] << ", " << obj[1] << "}";
             return(os);
         };
-}
+};
