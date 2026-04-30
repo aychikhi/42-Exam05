@@ -19,11 +19,6 @@
 *.exe
 *.out
 *.app
-bigint
-vect2
-polyset
-bsq
-life
 
 # Debug files
 *.dSYM/
